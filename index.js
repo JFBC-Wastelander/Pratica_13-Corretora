@@ -1,6 +1,7 @@
 const prompt = require("prompt-sync")()
 const acoes = require("./revendedora.js")
 
+while (true) {
 console.log(`Tecle 1 para criar
 Tecle 2 para listar
 Tecle 3 para atualizar
@@ -23,7 +24,8 @@ switch (entrada) {
         acoes.deletarImovel()
         break
     case 5:
-        console.log("Saindo. . .")
+        console.log("Saindo . . .")
         process.exit()
         break
+}
 }
