@@ -2,6 +2,8 @@ const prompt = require("prompt-sync")();
 const corretora = require("./modulos/corretora.js");
 const cliente = require("./modulos/cliente.js");
 const corretor = require("./modulos/corretor.js");
+const imovel = require("./modulos/imovel.js");
+const venda = require("./modulos/venda.js");
 
 const menuPrincipal = () => {
   console.log(`GERENCIAMENTO DE CORRETORA DE IMÓVEIS.\n`);
@@ -11,6 +13,8 @@ const menuPrincipal = () => {
 1- CORRETORA
 2- CLIENTE
 3- CORRETOR
+4- IMOVEL
+5- VENDA
 0- SAIR\n`);
 
     let entrada = parseInt(prompt(": "));
@@ -26,7 +30,10 @@ const menuPrincipal = () => {
         MenuCorretor();
         break;
       case 4:
-        acoes.deletarImovel();
+        MenuImovel();
+        break;
+      case 5:
+        MenuVenda();
         break;
       case 0:
         console.log("Saindo . . .");
@@ -128,6 +135,72 @@ const MenuCorretor = () => {
         break;
       case 4:
         corretor.destroy();
+        break;
+      case 0:
+        return;
+      default:
+        console.log("Opção inválida.");
+        break;
+    }
+  }
+};
+
+const MenuImovel = () => {
+  console.log("GERENCIAMENTO DE IMOVEL");
+  while (true) {
+    console.log(`
+            1- CADASTRAR IMOVEL
+            2- LISTAR IMOVEL
+            3- ATUALIZAR IMOVEL
+            4- EXCLUIR IMOVEL
+            0- SAIR`);
+
+    let opcaoServico = parseInt(prompt(": "));
+    switch (opcaoServico) {
+      case 1:
+        imovel.store();
+        break;
+      case 2:
+        imovel.index();
+        break;
+      case 3:
+        imovel.update();
+        break;
+      case 4:
+        imovel.destroy();
+        break;
+      case 0:
+        return;
+      default:
+        console.log("Opção inválida.");
+        break;
+    }
+  }
+};
+
+const MenuVenda = () => {
+  console.log("GERENCIAMENTO DE VENDA");
+  while (true) {
+    console.log(`
+            1- CADASTRAR VENDA
+            2- LISTAR VENDA
+            3- ATUALIZAR VENDA
+            4- EXCLUIR VENDA
+            0- SAIR`);
+
+    let opcaoServico = parseInt(prompt(": "));
+    switch (opcaoServico) {
+      case 1:
+        venda.store();
+        break;
+      case 2:
+        venda.index();
+        break;
+      case 3:
+        venda.update();
+        break;
+      case 4:
+        venda.destroy();
         break;
       case 0:
         return;
